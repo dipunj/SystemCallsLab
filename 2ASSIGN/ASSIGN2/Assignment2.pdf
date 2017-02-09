@@ -1,0 +1,24 @@
+						Programming Tools - II
+					      LAB ASSIGNMENT for Week # 2
+
+
+
+
+1. Write a C program to create a child process using fork() system call. Also use wait() system call
+in parent process such that it gets the return status of its child, return status must be printed on console.
+
+Hint: Use (i) WIFEXITED
+(ii) WEXITSTATUS
+(iii) WIFSIGNALED
+POSIX macros to print the exit status of child process.
+
+2. Write a program in C to demonstrate Zombie processes.Create an orphan process to distinguish between them.
+
+3. Use fork-exec combination where child exec the new program while parent continue to execute
+the original code. The new program here is ls command with command-line argument -l.
+Extension: Execute your code from a directory that has lot of files ( e.g /etc) and execute ls -l
+command. What happens if you enter ctrl+c as soon as the listing start to display. Try to display the
+exit status of child process as it has been interrurted by ctrl+c.
+
+
+Last date of submission: 13/01/2017
