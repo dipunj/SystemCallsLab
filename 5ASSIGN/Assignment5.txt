@@ -1,0 +1,27 @@
+Programming Tools II LAB
+ASSIGNMENT WEEK # 5
+
+===============================================================================
+
+1. Use FIFO / named pipe to establish communication between two different processes –
+client and server. The client and server communicate with each other using two different FIFOs to establish two way communication. 
+The client process sends a <file-name> of a file residing on the server, using a FIFO. The server fetches the <file-name> from that FIFO, reads the contents of the file and then writes the contents read back to the client
+process using another FIFO. Finally the client displays the content receieved from the server
+on its terminal.
+
+--------------------------------------------------------------------------------
+
+2. Redirecting Output: “ls -l | sort”. Use FIFO to develop a program where one process will execute “ls -l” and the output of the
+command will act as input for other process which will execute “sort” on it.
+
+--------------------------------------------------------------------------------
+
+3. Write a program to implement Echo Service between multiple clients and a server using
+named pipes. The server uses a well known FIFO to communicate with the clients. Each client maintains
+its own FIFO for receiving content from the server. The clients will write chunks of data (a
+string) to the server using the well known FIFO. The server will then echo the string back to
+the clients using the individual FIFOs maintained by the clients.
+
+================================================================================
+
+Last date for submission: 12/02/2017

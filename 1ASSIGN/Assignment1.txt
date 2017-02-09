@@ -1,0 +1,24 @@
+Programming Tools - II
+LAB ASSIGNMENT for Week # 1
+Creating Processes using fork()
+
+=================================================================
+
+Q.1. Write a program in C to demonstrate the basic usage of
+fork() system call. In the parent process display its process id,
+its child's process id and its owner id and in the child process
+display its process id and its parent's process id. Use wait()
+system call in parent process's block to wait for the child
+process to exit.
+
+-----------------------------------------------------------------
+
+Q.2. Write a program to create a chain of 5 processes.
+
+-----------------------------------------------------------------
+
+Q.3. Write a program to create a process tree consisting of 8
+processes with height 3.
+
+=================================================================
+Submission Date: 4/01/2017
