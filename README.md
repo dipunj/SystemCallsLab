@@ -1,4 +1,4 @@
-# PROG_TOOLS2
+# PROGRAMMING TOOLS - II
 This repository contains the codes for the Programming Tools-2 Lab Assignments.
 The files and directories are prefixed with their serial number(in order of 
 actual appearence).
