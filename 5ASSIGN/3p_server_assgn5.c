@@ -26,13 +26,13 @@ int main()
 	int num_read,num_write;
 	int i,fd_WK,fd_CL[2];
 
-	mknod("WELL_KNOWN", S_IFIFO|0666, 0);
-	fd_WK = open("WELL_KNOWN",O_RDONLY);
+	mknod("WELL_KNOWN",S_IFIFO|0666,0);
+	fd_WK = open("WELL_KNOWN",O_RDWR);
 
-	mknod("SRVR_2_CLA",S_IFIFO|0666, 0);
-	fd_CL[0] = open("SRVR_2_CLA",O_WRONLY);	
-	mknod("SRVR_2_CLB",S_IFIFO|0666, 0);
-	fd_CL[1] = open("SRVR_2_CLB",O_WRONLY);
+	mknod("SRVR_2_CLA",S_IFIFO|0666,0);
+	fd_CL[0] = open("SRVR_2_CLA",O_RDWR);	
+	mknod("SRVR_2_CLB",S_IFIFO|0666,0);
+	fd_CL[1] = open("SRVR_2_CLB",O_RDWR);
 
 	printf("SERVER: Ready to Recieve Requests...\n");
 
