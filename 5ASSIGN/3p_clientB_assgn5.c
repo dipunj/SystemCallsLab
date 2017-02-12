@@ -24,13 +24,12 @@ int main()
 	char s[300];
 	char resp_buff[1000];
 	int num_read,num_write;
-	int fd_WK,fd_CLB;
+	int fd_WK,fd_CL[1];
 
 	mknod("WELL_KNOWN",S_IFIFO|0666,0);
 	fd_WK = open("WELL_KNOWN",O_RDWR);
-
 	mknod("SRVR_2_CLB",S_IFIFO|0666,0);
-	fd_CLB = open("SRVR_2_CLB",O_RDWR);
+	fd_CL[1] = open("SRVR_2_CLB",O_RDWR);
 
 	printf("Created the pipe...\nEnter some text :: ");
 
@@ -48,7 +47,7 @@ int main()
 	
 	// OUTPUT THE RESPONSE FROM SERVER
 	{
-		if((num_write = read(fd_CLB,resp_buff,1000)) == -1)
+		if((num_write = read(fd_CL[1],resp_buff,1000)) == -1)
 			perror("read");
 		else
 		{

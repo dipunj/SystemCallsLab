@@ -24,15 +24,14 @@ int main()
 	char s[300];
 	char resp_buff[1000];
 	int num_read,num_write;
-	int fd_WK,fd_CLA;
+	int fd_WK,fd_CL[0];
 
 	mknod("WELL_KNOWN",S_IFIFO|0666,0);
 	fd_WK = open("WELL_KNOWN",O_RDWR);
-
 	mknod("SRVR_2_CLA",S_IFIFO|0666,0);
-	fd_CLA = open("SRVR_2_CLA",O_RDWR);
+	fd_CL[0] = open("SRVR_2_CLA",O_RDWR);
 
-	printf("Created the pipe...\nEnter the filename:: ");
+	printf("Created the pipe...\nEnter some text:: ");
 
 	// SEND REQUEST
 	while (gets(s),!feof(stdin))
@@ -47,14 +46,13 @@ int main()
 	}	
 	
 	// OUTPUT THE RESPONSE FROM SERVER
+	if((num_write = read(fd_CL[0],resp_buff,1000)) == -1)
+		perror("read");
+	else
 	{
-		if((num_write = read(fd_CLA,resp_buff,1000)) == -1)
-			perror("read");
-		else
-		{
-			s[num_write] = '\0';
-			printf("CLIENT: Recieved : %dBytes\n\n\t\t=======SERVER RESPONSE========\n\n %s \n\n",num_write,resp_buff);
-		}
+		s[num_write] = '\0';
+		printf("CLIENT: Recieved : %dBytes\n\n\t\t=======SERVER RESPONSE========\n\n %s \n\n",num_write,resp_buff);
 	}
 	return 0;
 }
+
