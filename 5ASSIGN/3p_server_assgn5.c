@@ -24,20 +24,22 @@ int main()
 {
 	char s[1000];
 	int num_read = 0;	
-	int i = 0;
+	int i = 0; 	// SO THAT SERVER ONLY PROCESSES ONE REQUEST FROM EACH OF THE CLIENTS.
 	int fd_WK,fd_CL[CLS];
 
+	// CREATING PIPE FOR UPLINK.
 	mknod("WELL_KNOWN", S_IFIFO|0666, 0);
 	printf("Waiting for clients...\n");
 	fd_WK = open("WELL_KNOWN",O_RDONLY);
 
+	// CREATING PIPE FOR DOWNLINK FOR 2 CLIENTS.
 	mknod("SRVR_2_CLA", S_IFIFO | 0666, 0);
 	fd_CL[0] = open("SRVR_2_CLA",O_WRONLY);	
 	mknod("SRVR_2_CLB", S_IFIFO | 0666, 0);
 	fd_CL[1] = open("SRVR_2_CLB",O_WRONLY);
 	printf("All clients online...\n");
 
-	printf("SERVER: Ready to Recieve Requests...\n");
+	printf("\nSERVER: Ready to Recieve Requests...\n");
 
 	do
 	{
@@ -53,9 +55,14 @@ int main()
 	}
 	while(num_read > 0 && i < CLS);
 
+	// TERMINATING THE BUFFER WITH NULL.
 	s[num_read] = '\0';
+
 	//RESPONSE TO BOTH CLIENT-A, CLIENT-B
 	for(i=0;i<CLS;i++)
 		write(fd_CL[i],s,num_read);
+
+	// REMOVING THE PIPES AFTER USE
+	system("rm WELL_KNOWN SRVR_2_CLA SRVR_2_CLB");
 	return 0;
 }
