@@ -16,15 +16,15 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#define NUM_CL 2
+#define CLS 2
 //	SERVER FILE
 
 int main()
 {
-	char s[300];
-	char resp_buff[1000];
-	int num_read,num_write;
-	int i,fd_WK,fd_CL[2];
+	char s[1000];
+	int num_read = 0;	
+	int i = 0
+	int fd_WK,fd_CL[CLS];
 
 	mknod("WELL_KNOWN", S_IFIFO|0666, 0);
 	fd_WK = open("WELL_KNOWN",O_RDONLY);
@@ -36,19 +36,23 @@ int main()
 
 	printf("SERVER: Ready to Recieve Requests...\n");
 
-	for(i=0 ; i < NUM_CL ; i++)
+	do
 	{
 		//READING CLIENT'S REQUEST
-		if((num_read = read(fd_WK,s,300)) == -1)
+		if((num_read = num_read + read(fd_WK,&s[num_read],1000)) == -1)
 				perror("read");
 		else
 		{
-			s[num_read] = '\0';
-			printf("SERVER: bytes written : %d bytes\nSERVER: Client Text Recieved ::\"%s\"\n",num_read,s);
+			i++;
+			printf("SERVER: %d B written\nSERVER: Client Text Recieved ::\"%s\"\n",num_read,s);
+			s[num_read++] = '\n';
 		}
-		//RESPONSE TO BOTH CLIENT-A, CLIENT-B
-		ssize_t len = read(fd_WK,resp_buff,1000);
-		write(fd_CL[i],resp_buff,len);
 	}
+	while(num_read > 0 && i < CLS)
+
+		s[num_read] = '\0';
+	//RESPONSE TO BOTH CLIENT-A, CLIENT-B
+	for(i=0;i<CLS;i++)
+		write(fd_CL[i],resp_buff,len);
 	return 0;
 }

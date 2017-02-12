@@ -24,7 +24,7 @@ int main()
 	char s[300];
 	char resp_buff[1000];
 	int num_read,num_write;
-	int fd_WK,fd_CL[1];
+	int fd_WK,fd;
 
 	mknod("WELL_KNOWN",S_IFIFO|0666,0);
 	fd_WK = open("WELL_KNOWN",O_WRONLY);
