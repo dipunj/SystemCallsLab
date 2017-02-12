@@ -18,7 +18,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-//	CLIENT FILE
+//	CLIENT-A FILE
 int main()
 {
 	char s[300];
@@ -26,13 +26,15 @@ int main()
 	int num_read,num_write;
 	int fd_WK,fd;
 
-	mknod("WELL_KNOWN",S_IFIFO|0666,0);
-	fd_WK = open("WELL_KNOWN",O_WRONLY);
-	mknod("SRVR_2_CLA",S_IFIFO|0666,0);
-	fd = open("SRVR_2_CLA",O_RDONLY);
+	// CREATING OR CONNECTING TO THE PIPE FOR UPLINK
+	mknod("WELL_KNOWN", S_IFIFO|0666,0);
+	fd_WK = open("WELL_KNOWN", O_WRONLY);
+
+	// CREATING OR CONNECTING TO THE PIPE FOR DOWNLINK
+	mknod("SRVR_2_CLA", S_IFIFO|0666,0);
+	fd = open("SRVR_2_CLA", O_RDONLY);
 
 	printf("Created the pipe...\nEnter some text:: ");
-
 	// SEND REQUEST
 	while (gets(s),!feof(stdin))
 	{
