@@ -27,9 +27,9 @@ int main()
 	int fd_WK,fd_CL[0];
 
 	mknod("WELL_KNOWN",S_IFIFO|0666,0);
-	fd_WK = open("WELL_KNOWN",O_RDWR);
+	fd_WK = open("WELL_KNOWN",O_WRONLY);
 	mknod("SRVR_2_CLA",S_IFIFO|0666,0);
-	fd_CL[0] = open("SRVR_2_CLA",O_RDWR);
+	fd_CL[0] = open("SRVR_2_CLA",O_RDONLY);
 
 	printf("Created the pipe...\nEnter some text:: ");
 
