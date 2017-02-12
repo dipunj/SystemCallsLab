@@ -18,7 +18,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-//	CLIENT FILE
+//	CLIENT-B FILE
 int main()
 {
 	char s[300];
@@ -29,9 +29,9 @@ int main()
 	mknod("WELL_KNOWN",S_IFIFO|0666,0);
 	fd_WK = open("WELL_KNOWN",O_WRONLY);
 	mknod("SRVR_2_CLB",S_IFIFO|0666,0);
-	fd_CL[1] = open("SRVR_2_CLB",O_RDONLY);
+	fd = open("SRVR_2_CLB",O_RDONLY);
 
-	printf("Created the pipe...\nEnter some text :: ");
+	printf("Created the pipe...\nEnter some text:: ");
 
 	// SEND REQUEST
 	while (gets(s),!feof(stdin))
@@ -40,20 +40,19 @@ int main()
 			perror("write");
 		else
 		{
-			printf("CLIENT: Request sent to server :::bytes written :: %dBytes\n",num_read);
+			printf("CLIENT: Request sent to server ::: %d B written\n",num_read);
 			break;
 		}
 	}	
 	
 	// OUTPUT THE RESPONSE FROM SERVER
+	if((num_write = read(fd,resp_buff,1000)) == -1)
+		perror("read");
+	else
 	{
-		if((num_write = read(fd_CL[1],resp_buff,1000)) == -1)
-			perror("read");
-		else
-		{
-			s[num_write] = '\0';
-			printf("CLIENT: Recieved : %dBytes\n\n\t\t=======SERVER RESPONSE========\n\n %s \n\n",num_write,resp_buff);
-		}
+		s[num_write] = '\0';
+		printf("CLIENT: %d B Recieved\nSERVER RESPONSE:\n%s",num_write,resp_buff);
 	}
 	return 0;
 }
+

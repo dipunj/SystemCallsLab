@@ -17,22 +17,25 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #define CLS 2
+
 //	SERVER FILE
 
 int main()
 {
 	char s[1000];
 	int num_read = 0;	
-	int i = 0
+	int i = 0;
 	int fd_WK,fd_CL[CLS];
 
 	mknod("WELL_KNOWN", S_IFIFO|0666, 0);
+	printf("Waiting for clients...\n");
 	fd_WK = open("WELL_KNOWN",O_RDONLY);
 
-	mknod("SRVR_2_CLA",S_IFIFO|0666, 0);
+	mknod("SRVR_2_CLA", S_IFIFO | 0666, 0);
 	fd_CL[0] = open("SRVR_2_CLA",O_WRONLY);	
-	mknod("SRVR_2_CLB",S_IFIFO|0666, 0);
+	mknod("SRVR_2_CLB", S_IFIFO | 0666, 0);
 	fd_CL[1] = open("SRVR_2_CLB",O_WRONLY);
+	printf("All clients online...\n");
 
 	printf("SERVER: Ready to Recieve Requests...\n");
 
@@ -40,19 +43,19 @@ int main()
 	{
 		//READING CLIENT'S REQUEST
 		if((num_read = num_read + read(fd_WK,&s[num_read],1000)) == -1)
-				perror("read");
+			perror("read");
 		else
 		{
 			i++;
-			printf("SERVER: %d B written\nSERVER: Client Text Recieved ::\"%s\"\n",num_read,s);
+			printf("SERVER: %d B written\nSERVER: Client Text Recieved ::%s\n",num_read,s);
 			s[num_read++] = '\n';
 		}
 	}
-	while(num_read > 0 && i < CLS)
+	while(num_read > 0 && i < CLS);
 
-		s[num_read] = '\0';
+	s[num_read] = '\0';
 	//RESPONSE TO BOTH CLIENT-A, CLIENT-B
 	for(i=0;i<CLS;i++)
-		write(fd_CL[i],resp_buff,len);
+		write(fd_CL[i],s,num_read);
 	return 0;
 }
