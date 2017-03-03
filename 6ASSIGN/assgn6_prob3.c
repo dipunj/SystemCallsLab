@@ -22,11 +22,11 @@ void sig_handler(int sig)
 	printf("This is the CUSTOM signal handler\n");
 	if ( WIFEXITED(status) )
 	{
-		printf("Child's Termination was NORMAL.\n");
-		printf("The exit status returned by the child is :: %d\n",WEXITSTATUS(status));
+		printf("\tChild's Termination was NORMAL.\n");
+		printf("\tThe exit status returned by the child is :: %d\n",WEXITSTATUS(status));
 	}
 	else
-		printf("Child's Termination was ABNORMAL\n");
+		printf("\tChild's Termination was ABNORMAL\n");
 
 }
 
@@ -38,12 +38,12 @@ int main()
 	if( pid != 0 )		//PARENT SHALL EXECUTE IN THIS BLOCK
 	{
 		wait( &status );
-		printf("\nThis is PARENT'S process\n");
+		printf("This is PARENT'S process\n\n");
 	}
 	else
 	{
 		//CHILD SHALL EXECUTE IN THIS BLOCK
-		printf("\n\nThis is CHILD'S process");
+		printf("This is CHILD'S process\n");
 		
 		char option;
 		printf("\nHow do you wish to terminate the child?\n\t1. Normally\n\t2. Abnormally\nYour Response ::");
@@ -52,7 +52,7 @@ int main()
 			printf("\nWhat (8 bit) value should the child return to the parent? :: ");
 			int op;
 			scanf("%d",&op);
-			kill( getppid(), SIGCHLD);
+			printf("\n");
 			exit(op);
 		}
 		else
