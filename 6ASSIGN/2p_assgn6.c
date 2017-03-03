@@ -1,9 +1,21 @@
+// NAME       : DIPUNJ GUPTA
+// REG        : 20154061
+// GROUP      : CSA2
+// SEMESTER   : 4TH
+// SESSION    : 2016-17
+// LAB        : PROGRAMMING TOOLS - II
+// ASSIGNMENT : #6
+	
+// PROBLEM    : #2
+
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>
+
 int count;
 unsigned int alrm;
+
 void sig_handler(int sig)
 {	
 	count++;
@@ -21,8 +33,5 @@ void main()
 	alarm(alrm);
 	signal(SIGALRM,sig_handler);
 	while(1)
-		{
-			;
-			//printf("Hello, this is main\n");
-		}
+		{;}
 }
