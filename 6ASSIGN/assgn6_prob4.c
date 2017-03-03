@@ -41,7 +41,7 @@ void main()
 				signal(SIGHUP,sig_handler);
 				signal(SIGTERM,sig_handler);
 			
-				sleep(100);
+				sleep(20);
 				printf("Hello this is child process, PID = %d\n",getpid());
 				break;
 			}
