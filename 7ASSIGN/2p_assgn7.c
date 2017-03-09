@@ -19,17 +19,17 @@ void sig_handler(int sig)
 	{
 		case SIGINT:
 		{
-			printf("SIGINT occured\n");
+			printf("\tSIGINT occured\n");
 			break;
 		}
 		case SIGHUP:
 		{
-			printf("SIGHUP occured\n");
+			printf("\tSIGHUP occured\n");
 			break;
 		}
 		case SIGTERM:
 		{
-			printf("SIGTERM occured\n");
+			printf("\tSIGTERM occured\n");
 			break;
 		}
 	}
@@ -42,7 +42,7 @@ void sig_handler(int sig)
 void install_handler()
 {
 	struct sigaction action;
-	sigset_t block_mask;		//CREATING A SIGNAL SET
+	sigset_t block_mask;		//CREATING BLOCK SIGNAL SET
 	sigemptyset( &block_mask );	//INITIALISING IT AS AN EMPTY SET
 
 	//ADDING NEW ENTRIES TO THE SET
@@ -59,11 +59,13 @@ void install_handler()
 	//FLAGS
 	action.sa_flags = 0;
 
-
 	//USING sigaction() TO CHANGE BEHAVIOUR ON EACH OF THE FOLLOWING SIGNALS.
-	sigaction(SIGINT,&action,NULL);
-	sigaction(SIGHUP,&action,NULL);
-	sigaction(SIGTERM,&action,NULL);
+	if(sigaction(SIGINT,&action,NULL) || sigaction(SIGHUP,&action,NULL) || sigaction(SIGTERM,&action,NULL))
+	{
+		//error checking
+		perror("sigaction");
+		return;
+	}
 }
 void main()
 {
@@ -106,9 +108,9 @@ void main()
 							kill(pid,SIGTERM);
 							break;
 						}
-				}	
-				long long int t = 99999999999;
-				while(t--)
+				}
+				int t = 99999999;
+				while(t--)	
 				{;}
 			}
 	}
