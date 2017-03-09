@@ -1,4 +1,3 @@
-// SEMESTER   :  IVth
 // LAB        :  PROGRAMMING TOOLS - II(SYSTEM CALLS)
 // DATE       :  FEB 9TH, 2017
 // ASSIGNMENT :  5

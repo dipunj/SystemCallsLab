@@ -4,7 +4,7 @@
 // PROBLEM      : #1
 // STATEMENT    : Write a c program which copies the file  /etc/passwd to passwd.bak in the user's current directory.
 // 		  The source file is opened in read only mode.The destination file is opened in the write mode.
-// 		  Also find the file descriptor values for each file open. Print all the content of file on standard output.
+// 		  Also find the file descriptor values for each file open. Print all the content of file on standard output .
 
 
 #include <stdio.h>

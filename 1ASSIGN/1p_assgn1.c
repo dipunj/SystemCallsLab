@@ -1,4 +1,3 @@
-// SEMESTER   :  IVth
 // LAB        :  PROGRAMMING TOOLS - II(SYSTEM CALLS)
 // ASSIGNMENT :  1
 //

@@ -1,4 +1,3 @@
-// SEMESTER   : 4TH
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II
 // ASSIGNMENT : #2
