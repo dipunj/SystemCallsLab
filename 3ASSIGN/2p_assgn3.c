@@ -1,5 +1,3 @@
-// NAME        : DIPUNJ GUPTA
-// REG         : 20154061
 // LAB         : PROGRAMMING TOOLS - II
 // DATE        : JAN 12, 2017
 // ASSGIGNMENT : #3

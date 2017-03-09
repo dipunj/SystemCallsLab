@@ -1,8 +1,8 @@
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II
-// ASSIGNMENT : #6
+// ASSIGNMENT : #7
 	
-// PROBLEM    : #3
+// PROBLEM    : #1
 
 // CODE : -
 
@@ -15,7 +15,7 @@
 int status;
 void sig_handler(int sig)
 {
-	printf("This is the CUSTOM signal handler\n");
+	printf("This is the CUSTOM signal handler CALLED BY \"sigaction\"\n");
 	if ( WIFEXITED(status) )
 	{
 		printf("\tChild's Termination was NORMAL.\n");
@@ -28,8 +28,13 @@ void sig_handler(int sig)
 
 int main()
 {
-	signal(SIGCHLD,sig_handler);
+	struct sigaction action;
+	action.sa_handler = sig_handler;
+	sigemptyset(&action.sa_mask);
+	action.sa_flags = 0;
+	sigaction(SIGCHLD,&action,0);
 	
+
 	pid_t pid = fork();
 	if( pid != 0 )		//PARENT SHALL EXECUTE IN THIS BLOCK
 	{

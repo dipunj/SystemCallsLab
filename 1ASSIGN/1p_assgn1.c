@@ -1,6 +1,3 @@
-// NAME       :  DIPUNJ GUPTA
-// REG. NO.   :  20154061
-// GROUP      :  CS-A2
 // SEMESTER   :  IVth
 // LAB        :  PROGRAMMING TOOLS - II(SYSTEM CALLS)
 // ASSIGNMENT :  1

@@ -1,7 +1,3 @@
-// NAME       : DIPUNJ GUPTA
-// REG        : 20154061
-// GROUP      : CSA2
-// SEMESTER   : 4TH
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II
 // ASSIGNMENT : #6

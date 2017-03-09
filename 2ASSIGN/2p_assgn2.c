@@ -1,6 +1,3 @@
-// NAME       : DIPUNJ GUPTA
-// REG.       : 20154061
-// GROUP      : CS-A2
 // SEMESTER   : 4TH
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II

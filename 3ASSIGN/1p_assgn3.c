@@ -1,12 +1,10 @@
-// NAME : DIPUNJ GUPTA
-// REG  : 20154061
-// LAB  : PROGRAMMING TOOLS - II
-// DATE : JAN 12, 2017
-// ASSGIGNMENT : #3
-// PROBLEM     : #1
-// STATEMENT   : Write a c program which copies the file  /etc/passwd to passwd.bak in the user's current directory.
-// 		 The source file is opened in read only mode.The destination file is opened in the write mode.
-// 		 Also find the file descriptor values for each file open. Print all the content of file on standard output.
+// LAB  	: PROGRAMMING TOOLS - II
+// DATE 	: JAN 12, 2017
+// ASSGIGNMENT  : #3
+// PROBLEM      : #1
+// STATEMENT    : Write a c program which copies the file  /etc/passwd to passwd.bak in the user's current directory.
+// 		  The source file is opened in read only mode.The destination file is opened in the write mode.
+// 		  Also find the file descriptor values for each file open. Print all the content of file on standard output.
 
 
 #include <stdio.h>

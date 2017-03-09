@@ -1,9 +1,12 @@
+// NAME       : DIPUNJ GUPTA
+// REG        : 20154061
+// GROUP      : CSA2
 // SEMESTER   : 4TH
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II
-// ASSIGNMENT : #6
+// ASSIGNMENT : #7
 	
-// PROBLEM    : #4
+// PROBLEM    : #2
 
 #include <stdio.h>
 #include <unistd.h>
@@ -30,6 +33,37 @@ void sig_handler(int sig)
 			break;
 		}
 	}
+
+	//TO KEEP THE SIGNAL HANDLER BUSY
+	long long int t = 9999999;
+	while(t--)
+	{;}
+}
+void install_handler()
+{
+	struct sigaction action;
+	sigset_t block_mask;		//CREATING A SIGNAL SET
+	sigemptyset( &block_mask );	//INITIALISING IT AS AN EMPTY SET
+
+	//ADDING NEW ENTRIES TO THE SET
+	sigaddset(&block_mask,SIGINT);	
+	sigaddset(&block_mask,SIGHUP);
+	sigaddset(&block_mask,SIGTERM);
+
+	//DEFINING NEW ACTION FOR THE HANDLER
+	action.sa_handler = sig_handler;
+
+	//DEFINING SA_MASK
+	action.sa_mask = block_mask;
+
+	//FLAGS
+	action.sa_flags = 0;
+
+
+	//USING sigaction() TO CHANGE BEHAVIOUR ON EACH OF THE FOLLOWING SIGNALS.
+	sigaction(SIGINT,&action,NULL);
+	sigaction(SIGHUP,&action,NULL);
+	sigaction(SIGTERM,&action,NULL);
 }
 void main()
 {
@@ -44,12 +78,9 @@ void main()
 			}
 		case 0: //CHILD
 			{
-				signal(SIGINT,sig_handler);
-				signal(SIGHUP,sig_handler);
-				signal(SIGTERM,sig_handler);
-			
+				install_handler();
 				sleep(20);
-				printf("Hello this is child process, PID = %d\n",getpid());
+				printf("\tHello this is child process, PID = %d\n",getpid());
 				break;
 			}
 		default: //PARENT
@@ -75,15 +106,10 @@ void main()
 							kill(pid,SIGTERM);
 							break;
 						}
-					/*default :
-						{
-							printf("Please choose from the above signals!!\n");
-							exit(0);
-						}
-					*/
-				}
-			
-	
+				}	
+				long long int t = 99999999999;
+				while(t--)
+				{;}
 			}
 	}
 }

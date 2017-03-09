@@ -1,7 +1,3 @@
-// NAME       : DIPUNJ GUPTA
-// REG        : 20154061
-// GROUP      : CSA2
-// SEMESTER   : 4TH
 // SESSION    : 2016-17
 // LAB        : PROGRAMMING TOOLS - II
 // ASSIGNMENT : #6
@@ -18,17 +14,17 @@ void sig_handler(int sig)
 	{
 		case SIGINT:
 		{
-			printf("SIGINT occured");
+			printf("SIGINT occured\n");
 			break;
 		}
 		case SIGHUP:
 		{
-			printf("SIGHUP occured");
+			printf("SIGHUP occured\n");
 			break;
 		}
 		case SIGTERM:
 		{
-			printf("SIGTERM occured");
+			printf("SIGTERM occured\n");
 			break;
 		}
 	}

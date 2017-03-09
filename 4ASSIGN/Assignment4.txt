@@ -7,15 +7,15 @@ Child process will read the string and print the string in child process itself.
 
 ------------------------------------------------------------------------------------
 
-2. Redirecting Output: “ls -l | sort”
-A. Using pipe() and dup(), write a program where child process will execute “ls -l” 
-The output will act as input for parent process which will execute “sort” on it.
+2. Redirecting Output: ls -l | sort
+A. Using pipe() and dup(), write a program where child process will execute ls -l
+The output will act as input for parent process which will execute sort on it.
 B. Perform program A using dup2() instead of dup(). 
-Accept the two commands i.e., ls –l and sort as command line arguments.
+Accept the two commands i.e., ls -l and sort as command line arguments.
 
 ------------------------------------------------------------------------------------
 
-3. Write a program to create your own man(manual) utility – myMan.c, using system calls fork, exec, pipe, dup/dup2. 
+3. Write a program to create your own man(manual) utility myMan.c, using system calls fork, exec, pipe, dup/dup2. 
 In this program, the parent process communicates with the child process using a pipe. 
 The parent process accepts the unix command/system calls (eg., ls, cat, ps, fork etc.) for which the man page is desired, as command line argument. 
 This argument is passed to the child process through the pipe and the child process invokes a new xterm terminal displaying the man page of the given command.
