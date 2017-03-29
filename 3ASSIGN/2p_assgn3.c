@@ -14,11 +14,10 @@ void main()
 	int i,infd = open("/etc/passwd",O_RDONLY);
 
 	// Moving the read pointer to the end of the file
-	// returned value is equal to the file size
+	// returned value is equal to the file size + 1
 	int fp = lseek(infd,0,SEEK_END);
 	
-	//Declaring the buffer size to be exactly equal to the file size
-	//specified by the infd file descriptor
+	//Declaring the buffer size to be equal to 1
 	char buf;
 
 	//Restoring the read pointer to the beginning of the file
