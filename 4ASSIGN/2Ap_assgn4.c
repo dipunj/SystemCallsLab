@@ -26,8 +26,8 @@ int main()
 		}
 		else
 		{
-			close(0);
-			fdes[0] = dup(fdes[0]);	//As the lowest available file descriptor is 1 so fdes[1] now is same as STDOUT
+			close(0);		// close STDIN
+			fdes[0] = dup(fdes[0]);	//As the lowest available file descriptor is 0 so fdes[1] now is same as STDIN
 			close(fdes[1]);
 			execl("/bin/sort","/bin/sort",NULL);
 		}
