@@ -22,12 +22,12 @@ int main()
 			close(1);		//close STDOUT
 			fdes[1] = dup(fdes[1]);	//As the lowest available file descriptor is 1 so fdes[1] now is same as STDOUT
 			close(fdes[0]);
-			execl("/bin/ls","/bin/ls","-l",NULL);	// replace the "." i.e the 3rd arg with directory of your choice
+			execl("/bin/ls","/bin/ls","-l",NULL);	// add a 3rd arg with directory of your choice
 		}
 		else
 		{
-			close(0);
-			fdes[0] = dup(fdes[0]);	//As the lowest available file descriptor is 1 so fdes[1] now is same as STDOUT
+			close(0);		// close STDIN
+			fdes[0] = dup(fdes[0]);	//As the lowest available file descriptor is 0 so fdes[1] now is same as STDIN
 			close(fdes[1]);
 			execl("/bin/sort","/bin/sort",NULL);
 		}

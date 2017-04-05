@@ -20,13 +20,12 @@ int main()
 	char s[300];
 	char resp_buff[1000];
 	int num_read,num_write;
-	int fd_c2s,fd_s2c;
 
 	mknod("cl_2_srvr",S_IFIFO|0666,0);
-	fd_c2s = open("cl_2_srvr",O_RDWR);
+	int fd_c2s = open("cl_2_srvr",O_RDWR);
 
 	mknod("srvr_2_cl",S_IFIFO|0666,0);
-	fd_s2c = open("srvr_2_cl",O_RDWR);
+	int fd_s2c = open("srvr_2_cl",O_RDWR);
 
 	printf("Created the pipe...\nEnter the filename:: ");
 

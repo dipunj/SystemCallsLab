@@ -43,7 +43,7 @@ int main()
 		}
 	}
 	else
-		printf("Fork Error...\n");
+		printf("Pipe Error...\n");
 
 	return 0;
 }
