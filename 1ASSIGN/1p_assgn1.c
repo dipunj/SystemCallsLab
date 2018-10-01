@@ -13,15 +13,20 @@
 void main()
 {
 	pid_t pid = fork();
-	if(pid != 0)						//this block shall only be executed when fork returns a non 0(child's PID) TO THE PARENT
-	{							//on succesful creation of a child process
+	
+	//this block shall only be executed when fork returns a non 0(child's PID) TO THE PARENT
+	//on succesful creation of a child process
+	if(pid != 0)
+	{
 		wait(0);
 		printf("\nThis is PARENT BLOCK");
 		printf("\n\t* MY PID          = %d",getpid());
 		printf("\n\t* MY CHILD'S PID  = %d",pid);
 		printf("\n\t* MY OWNER'S PID  = %d\n\n",getppid());
 	}
-	else							//this block shall only be executed when fork() returns a 0 value(to the CHILD)
+	
+	//this block shall only be executed when fork() returns a 0 value(to the CHILD)
+	else
 	{
 		printf("\nTHIS IS CHILD'S BLOCK");
 		printf("\n\t* MY PARENT'S PID = %d",getppid());
